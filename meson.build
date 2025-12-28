@@ -32,7 +32,7 @@ cpp = meson.get_compiler('cpp')
 deps_perfetto = [dependency('threads')]
 
 if host_machine.system() == 'android'
-  deps_perfetto += cpp.find_library('log')
+  deps_perfetto += dependency('log')
 endif
 
 lib_perfetto = static_library(
