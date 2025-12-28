@@ -29,16 +29,12 @@ endif
 
 cpp = meson.get_compiler('cpp')
 
-deps_perfetto = [dependency('threads')]
-
-if host_machine.system() == 'android'
-  deps_perfetto += cpp.find_library('log')
-endif
+dep_threads = dependency('threads')
 
 lib_perfetto = static_library(
     'perfetto',
     sources: 'sdk/perfetto.cc',
-    dependencies: deps_perfetto,
+    dependencies: dep_threads,
     install: true,
     cpp_args: '-std=c++17',
 )
